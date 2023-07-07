@@ -1,0 +1,35 @@
+---
+import Paginator from '../../components/Paginator.astro'
+import PageLayout from '../../layouts/PageLayout.astro'
+
+
+export async function getStaticPaths({ paginate }) {
+  // Carga tus datos con fetch(), Astro.glob(), etc.
+  const res = await fetch("https://norian.studio/wp-json/wp/v2/dinos?per_page=100")
+  const posts = await res.json();
+
+  // Devuelve una colección paginada de rutas para todos los artículos.
+  return paginate(posts, { pageSize: 45 });
+}
+
+// Si se configuró correctamente, La prop de la página ahora tiene todo lo que
+// necesita para renderizar una página (mira la siguiente sección).
+const { page } = Astro.props;
+
+
+
+---
+
+<PageLayout>
+    <section slot="main" class="pt-10">
+        <h2>Lista de dinos</h2>
+          {
+          page.data.map((post) => (
+          <ul>
+            <li><a href={`/dinos/${post.slug}/`} set:html={post.title.rendered} /> | {post.acf.size}</li>
+          </ul>
+          ))
+          }
+          <Paginator />
+      </section>
+</PageLayout>
