@@ -1,0 +1,33 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+
+
+
+const res = await fetch("https://norian.studio/wp-json/wp/v2/dinos?per_page=100")
+const posts = await res.json();
+---
+
+<PageLayout>
+    <PageMeta  title="Blog | Dinos" slot="meta" />
+        <section slot="main" class="pt-10">
+          <h2>Lista de dinos</h2>
+            {
+            posts.map((post) => (
+            <ul>
+              <li><a href={`/dinos/${post.slug}/`} set:html={post.title.rendered} /> | {post.acf.size}</li>
+            </ul>
+            ))
+            }
+        </section>
+</PageLayout>
+
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: unset;
+  }
+</style>
+
+
