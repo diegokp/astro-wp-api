@@ -2,7 +2,7 @@
 
 Theme: **minimal**
 
-Blogster is a collection of beautiful, accessible and performant blog templates built with [Astro](https://astro.build) and [Markdoc](https://markdoc.dev).
+Blogster is a collection of beautiful, accessible and performant blog templates built with [Astro](https://astro.build) and [Wordpress](https://developer.wordpress.org).
 
 Check out the demo here - [Blogster minimal template](https://blogster-minimal.netlify.app).
 

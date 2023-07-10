@@ -22,7 +22,7 @@ const { page } = Astro.props;
 <PageLayout>
   <PageMeta title={`${SITE_TITLE} | Blog`} slot="meta" />
     <section slot="main" class="pt-10">
-        <h2>Lista de dinos {page.currentPage}</h2>
+        <h2>Lista de dinos {page.currentPage} / {page.lastPage}</h2>
           {
           page.data.map((post) => (
           <ul>

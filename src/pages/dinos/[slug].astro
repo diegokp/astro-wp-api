@@ -27,6 +27,7 @@ export async function getStaticPaths() {
   <article slot="content">
     <img src={post._embedded['wp:featuredmedia']['0'].source_url} />
     <h1 set:html={post.title.rendered} />
+    <h3>Size: {post.acf.size} / Weight: {post.acf.size} </h3>
     <p>{post.acf.habitat}</p>
     <Fragment set:html={post.content.rendered} />
     <a href="/blog">Volver</a>

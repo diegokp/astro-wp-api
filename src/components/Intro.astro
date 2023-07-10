@@ -2,7 +2,9 @@
 import Heading from "./ui/Heading.astro";
 
 let res = await fetch("https://norian.studio/wp-json");
-let meta = await res.json()
+let meta = await res.json();
+
+
 ---
 
 <section class="wrapper">
@@ -12,9 +14,12 @@ let meta = await res.json()
   >
   Astro + WordPress
   </Heading>
-  <p class="subtext">Api Dinos de página WordPress llamada desde Astro</p>
+  <p class="subtext">Página en Astro con datos de Wordpress Api.</p>
   <p>Name: {meta.name}</p>
   <a href={meta.url} target="_blank">{meta.url}</a>
+  <div>
+    <img src="images/Primary-whitePNG.webp" alt="">
+  </div>
 </section>
 
 <style>
