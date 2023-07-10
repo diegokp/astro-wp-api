@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/ContentLayout.astro';
+import PageMeta from "../../components/PageMeta.astro";
+import { SITE_TITLE } from "../../config";
 
 const { slug } = Astro.params;
 
@@ -18,9 +20,10 @@ export async function getStaticPaths() {
   }));
 }
 
-console.log(post.title.rendered)
+
 ---
 <Layout>
+  <PageMeta title={`${SITE_TITLE} | Dinosaur`} slot="meta" />
   <article slot="content">
     <img src={post._embedded['wp:featuredmedia']['0'].source_url} />
     <h1 set:html={post.title.rendered} />

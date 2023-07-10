@@ -1,6 +1,7 @@
 ---
-import Paginator from '../../components/Paginator.astro'
-import PageLayout from '../../layouts/PageLayout.astro'
+import PageMeta from "../../components/PageMeta.astro";
+import PageLayout from '../../layouts/PageLayout.astro';
+import { SITE_TITLE } from "../../config";
 
 
 export async function getStaticPaths({ paginate }) {
@@ -9,20 +10,19 @@ export async function getStaticPaths({ paginate }) {
   const posts = await res.json();
 
   // Devuelve una colección paginada de rutas para todos los artículos.
-  return paginate(posts, { pageSize: 45 });
+  return paginate(posts, { pageSize: 10 });
 }
 
 // Si se configuró correctamente, La prop de la página ahora tiene todo lo que
 // necesita para renderizar una página (mira la siguiente sección).
 const { page } = Astro.props;
 
-
-
 ---
 
 <PageLayout>
+  <PageMeta title={`${SITE_TITLE} | Blog`} slot="meta" />
     <section slot="main" class="pt-10">
-        <h2>Lista de dinos</h2>
+        <h2>Lista de dinos {page.currentPage}</h2>
           {
           page.data.map((post) => (
           <ul>
@@ -30,6 +30,7 @@ const { page } = Astro.props;
           </ul>
           ))
           }
-          <Paginator />
+          {page.url.prev ? <a href={page.url.prev}>Anterior</a> : null}
+          {page.url.next ? <a href={page.url.next}>Siguiente</a> : null}
       </section>
 </PageLayout>
