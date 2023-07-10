@@ -4,7 +4,7 @@
 export const SITE_TITLE = "Astro + WP Api";
 export const SITE_DESCRIPTION =
   "Welcome to Astro website.";
-// export const TWITTER_HANDLE = "@yourtwitterhandle";
+export const TWITTER_HANDLE = "@yourtwitterhandle";
 export const MY_NAME = "AsData";
 
 // setup in astro.config.mjs

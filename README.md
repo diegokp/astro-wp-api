@@ -11,3 +11,6 @@ Check out the demo here - [Blogster minimal template](https://blogster-minimal.n
 A light weight theme built with plain old HTML and CSS. No external fonts or icons. Zero JavaScript. You get a full functional nice looking blog that loads super fast.
 
 
+## Demo
+
+[View on netlify...](https://astro-wp-api.netlify.app)
